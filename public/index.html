@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="Medzy" name="author">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+		<script src="cookie-manager.js"></script>
+		<script src="database.js"></script>
+		<script src="animations.js"></script>
+		<script src="sounds.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<title>Tic-Tac-Toe</title>
+   <script data-ad-client="ca-pub-5131173386895077" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	</head>
+	
+	<body>
+		<header class="game-header">
+			<div class="header-content">
+				<h1><i class="fas fa-gamepad"></i> Tic-Tac-Toe</h1>
+				<div class="header-actions">
+					<div id="connection-indicator" class="connection-indicator" style="display: none;">
+						<i class="fas fa-circle"></i>
+						<span>Disconnected</span>
+					</div>
+					<button id="sound-toggle" class="btn btn-secondary">
+						<i class="fas fa-volume-up"></i>
+					</button>
+					<button id="theme-toggle" class="btn btn-secondary">
+						<i class="fas fa-moon"></i>
+					</button>
+					<a href="dashboard.html" class="btn btn-primary">
+						<i class="fas fa-chart-bar"></i> Dashboard
+					</a>
+				</div>
+			</div>
+		</header>
+		<div class="game-container">
+			<div class="game-controls">
+				<div class="control-group">
+					<label for="game-mode"><i class="fas fa-users"></i> Game Mode</label>
+					<select id="game-mode">
+						<option value="pvc">Player vs Computer</option>
+						<option value="pvp">Player vs Player</option>
+					</select>
+				</div>
+				<div class="control-group" id="difficulty-container">
+					<label for="difficulty"><i class="fas fa-cog"></i> Difficulty</label>
+					<select id="difficulty">
+						<optgroup label="Easy">
+							<option value="Very Easy">Very Easy</option>
+							<option value="Easy">Easy</option>
+							<option value="Smart">Smart</option>
+							<option value="Easy Pro">Easy Pro</option>
+						</optgroup>
+						<optgroup label="Medium">
+							<option value="Medium Smart">Medium Smart</option>
+							<option value="Smart">Smart</option>
+							<option value="Smarter">Smarter</option>
+							<option value="Thinker">Thinker</option>
+						</optgroup>
+						<optgroup label="Hard">
+							<option value="Human Like">Human Like</option>
+							<option value="Pro">Pro</option>
+							<option value="Ledgen">Ledgen</option>
+							<option value="Un-Beatable">Un Beatable</option>
+						</optgroup>
+					</select>
+				</div>
+			</div>
+			
+			
+			
+			<div id="message" class="game-message"></div>
+			
+			<div class="game-board-container">
+				<div class="ai-thinking" id="ai-thinking">
+					<i class="fas fa-robot"></i> AI is thinking
+					<div>
+						<span class="thinking-dots"></span>
+						<span class="thinking-dots"></span>
+						<span class="thinking-dots"></span>
+					</div>
+				</div>
+				<table id="tab-ttt" cellspacing="0">
+					<tr>
+						<td id="00" onclick="clickedCell(this)"></td>
+						<td id="01" onclick="clickedCell(this)"></td>
+						<td id="02" onclick="clickedCell(this)"></td>
+					</tr>
+					<tr>
+						<td id="10" onclick="clickedCell(this)"></td>
+						<td id="11" onclick="clickedCell(this)"></td>
+						<td id="12" onclick="clickedCell(this)"></td>
+					</tr>
+					<tr>
+						<td id="20" onclick="clickedCell(this)"></td>
+						<td id="21" onclick="clickedCell(this)"></td>
+						<td id="22" onclick="clickedCell(this)"></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="game-actions">
+				<button id="bttn-restart" onclick="restartBttn(this)" class="btn btn-primary">
+					<i class="fas fa-play"></i> Computer Start
+				</button>
+				<button id="bttn-new-game" onclick="newGame()" class="btn btn-secondary" style="display: none;">
+					<i class="fas fa-redo"></i> New Game
+				</button>
+				<button onclick="showStats()" class="btn btn-secondary">
+					<i class="fas fa-chart-bar"></i> Stats
+				</button>
+			</div>
+		</div>
+
+		<footer style="margin: 2rem auto; max-width: 900px; padding: 1rem 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
+			<nav style="display: inline-flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+				<a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Home</a>
+				<span style="opacity: .6;">•</span>
+				<a href="dashboard.html" style="color: var(--text-secondary); text-decoration: none;">Dashboard</a>
+				<span style="opacity: .6;">•</span>
+				<a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+				<span style="opacity: .6;">•</span>
+				<a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+			</nav>
+			<div style="margin-top: .5rem; font-size: .875rem;">© <span id="year"></span> Tic-Tac-Toe</div>
+		</footer>
+		<script>
+			(function(){ var y=document.getElementById('year'); if(y){ y.textContent=new Date().getFullYear(); } })();
+		</script>
+	</body>
+</html>

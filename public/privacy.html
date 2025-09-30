@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+		<title>Privacy Policy</title>
+	</head>
+	<body>
+		<header class="game-header">
+			<div class="header-content">
+				<h1><i class="fas fa-shield-alt"></i> Privacy Policy</h1>
+				<div class="header-actions">
+					<a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Home</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="game-container" style="max-width: 900px; margin: 1.25rem auto;">
+			<div class="card" style="padding: 1rem;">
+				<h2 style="margin-top: 0;">Privacy Policy for Tic-Tac-Toe</h2>
+				<p>At this site, one of our main priorities is the privacy of our visitors. This Privacy Policy document describes what information is collected and how it is used.</p>
+
+				<h3>Consent</h3>
+				<p>By using this website, you consent to this Privacy Policy and agree to its terms.</p>
+
+				<h3>Information We Collect</h3>
+				<p>We aim to collect as little personal information as possible to run the game:</p>
+				<ul>
+					<li>Optional display name stored in cookies to personalize your experience.</li>
+					<li>Game settings and statistics stored locally in your browser using IndexedDB and local storage.</li>
+					<li>Technical diagnostics such as anonymized logs that may include IP address, browser type, Internet Service Provider, date/time stamps, referring/exit pages, and number of clicks for analytics and security.</li>
+				</ul>
+
+				<h3>How We Use Your Information</h3>
+				<ul>
+					<li>Provide, operate, and maintain the website.</li>
+					<li>Improve, personalize, and expand the experience.</li>
+					<li>Understand and analyze how the site is used.</li>
+					<li>Develop new features and functionality.</li>
+					<li>Detect, prevent, and address technical issues and abuse.</li>
+				</ul>
+
+				<h3>Log Files</h3>
+				<p>This site may follow a standard procedure of using log files. These files log visitors when they visit websites. The information collected by log files includes IP addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and number of clicks. These are not linked to any information that is personally identifiable and are used for analyzing trends, administering the site, tracking users' movement, and gathering demographic information.</p>
+
+				<h3>Cookies</h3>
+				<p>Like many websites, we use cookies to store certain preferences (such as theme) and your optional display name. You can choose to disable cookies through your individual browser options. Note that some features may not function properly without cookies.</p>
+
+				<h3>Local Storage and IndexedDB</h3>
+				<p>The game stores settings and gameplay statistics locally in your browser using local storage and IndexedDB. This data stays on your device unless you clear your browser data.</p>
+
+				<h3>Advertising</h3>
+				<p>This site may show ads provided by third parties such as Google. These providers may use cookies, JavaScript, or web beacons to deliver and measure ads. You can learn more about Google's use of data and how to control it at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer noopener">policies.google.com/technologies/ads</a>.</p>
+
+				<h3>Third-Party Privacy Policies</h3>
+				<p>This Privacy Policy does not apply to other advertisers or websites. Please consult the respective Privacy Policies of those third-party servers for more detailed information, including practices and instructions about how to opt-out of certain options.</p>
+
+				<h3>CCPA Privacy Rights</h3>
+				<p>California consumers have the right to request disclosure of the categories and specific pieces of personal data collected, request deletion of personal data, and request that personal data not be sold. If you make a request, we have one month to respond. To exercise any of these rights, contact us using the details below.</p>
+
+				<h3>GDPR Data Protection Rights</h3>
+				<p>Users in the EEA have rights including: access, rectification, erasure, restriction, objection to processing, and data portability. If you make a request, we have one month to respond. To exercise any of these rights, contact us using the details below.</p>
+
+				<h3>Children's Information</h3>
+				<p>We do not knowingly collect any Personal Identifiable Information from children under the age of 13. If you believe your child provided such information on this site, please contact us and we will promptly remove it.</p>
+
+				<h3>Changes to This Privacy Policy</h3>
+				<p>We may update this Privacy Policy from time to time. Changes will be posted on this page and are effective immediately after posting.</p>
+
+				<h3>Contact Us</h3>
+				<p>If you have questions or suggestions about this Privacy Policy, contact us at: support@example.com</p>
+			</div>
+		</div>
+		<footer style="margin: 2rem auto; max-width: 900px; padding: 1rem 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
+			<nav style="display: inline-flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+				<a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Home</a>
+				<span style="opacity: .6;">•</span>
+				<a href="dashboard.html" style="color: var(--text-secondary); text-decoration: none;">Dashboard</a>
+				<span style="opacity: .6;">•</span>
+				<a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+				<span style="opacity: .6;">•</span>
+				<a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+			</nav>
+			<div style="margin-top: .5rem; font-size: .875rem;">© <span id="year"></span> Tic-Tac-Toe</div>
+		</footer>
+		<script>
+			(function(){ var y=document.getElementById('year'); if(y){ y.textContent=new Date().getFullYear(); } })();
+		</script>
+	</body>
+</html>
+

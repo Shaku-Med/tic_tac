@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="database.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1><i class="fas fa-trophy"></i> Game Dashboard</h1>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="btn btn-secondary">
+                        <i class="fas fa-moon"></i> Theme
+                    </button>
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-gamepad"></i> Play Game
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-wins">0</h3>
+                        <p>Total Wins</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-losses">0</h3>
+                        <p>Total Losses</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-draws">0</h3>
+                        <p>Total Draws</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="win-rate">0%</h3>
+                        <p>Win Rate</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-sections">
+                <div class="section">
+                    <h2><i class="fas fa-chart-bar"></i> Difficulty Performance</h2>
+                    <div id="difficulty-stats" class="difficulty-stats">
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><i class="fas fa-history"></i> Recent Games</h2>
+                    <div id="recent-games" class="recent-games">
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-actions">
+                <button id="clear-data" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Clear All Data
+                </button>
+                <button id="export-data" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Export Data
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

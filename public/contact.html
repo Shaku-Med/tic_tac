@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+		<title>Contact Us</title>
+	</head>
+	<body>
+		<header class="game-header">
+			<div class="header-content">
+				<h1><i class="fas fa-envelope"></i> Contact Us</h1>
+				<div class="header-actions">
+					<a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Home</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="game-container" style="max-width: 900px; margin: 1.25rem auto;">
+			<div class="card" style="padding: 1rem;">
+				<p>Have a question, found a bug, or want to suggest a feature? Reach out using any of the options below.</p>
+
+				<h3>Email</h3>
+				<p><a href="mailto:support@example.com">support@example.com</a></p>
+
+
+				<h3>Notes</h3>
+				<ul>
+					<li>We read every message. If needed, we may contact you for more details.</li>
+					<li>Do not include sensitive information in your message.</li>
+				</ul>
+			</div>
+		</div>
+
+		<footer style="margin: 2rem auto; max-width: 900px; padding: 1rem 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
+			<nav style="display: inline-flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+				<a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Home</a>
+				<span style="opacity: .6;">•</span>
+				<a href="dashboard.html" style="color: var(--text-secondary); text-decoration: none;">Dashboard</a>
+				<span style="opacity: .6;">•</span>
+				<a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+				<span style="opacity: .6;">•</span>
+				<a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+			</nav>
+			<div style="margin-top: .5rem; font-size: .875rem;">© <span id="year"></span> Tic-Tac-Toe</div>
+		</footer>
+		<script>
+			(function(){ var y=document.getElementById('year'); if(y){ y.textContent=new Date().getFullYear(); } })();
+		</script>
+	</body>
+</html>
+
