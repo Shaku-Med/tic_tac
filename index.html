@@ -3,38 +3,71 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta content="Medzy" name="author">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="tailwind.css">
 		<script type="text/javascript" src="main.js"></script>
 		<title>Tic-Tac-Toe</title>
    <script data-ad-client="ca-pub-5131173386895077" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	</head>
 	
-	<body>
-		<header>
-			<p>IF YOU WIN, I'll GIVE YOU THIS WEBSITE></p>
+	<body class="bg-gradient-to-br from-gray-900 to-blue-900 min-h-screen flex flex-col items-center justify-start">
+		<header class="w-full bg-green-500 py-6 shadow-lg mb-8">
+			<h1 class="text-3xl font-extrabold text-white text-center tracking-wide">Tic-Tac-Toe</h1>
+			<p class="text-white text-center mt-2 font-semibold">IF YOU WIN, I'll GIVE YOU THIS WEBSITE &gt;</p>
 		</header>
-		
-		<br><p id="message"></p><br>
-		<table id="tab-ttt" cellspacing="0">
-			<tr>
-				<td id="00" onclick="clickedCell(this)"></td>
-				<td id="01" onclick="clickedCell(this)"></td>
-				<td id="02" onclick="clickedCell(this)"></td>
-			</tr>
-			<tr>
-				<td id="10" onclick="clickedCell(this)"></td>
-				<td id="11" onclick="clickedCell(this)"></td>
-				<td id="12" onclick="clickedCell(this)"></td>
-			</tr>
-			<tr>
-				<td id="20" onclick="clickedCell(this)"></td>
-				<td id="21" onclick="clickedCell(this)"></td>
-				<td id="22" onclick="clickedCell(this)"></td>
-			</tr>
-		</table>
-		<br><br>
-		
-		<input type="button" value="Computer Start" id="bttn-restart" onclick="restartBttn(this)"/>
-		<br>
+		<div class="w-full max-w-md flex flex-col items-center">
+			<div class="flex flex-col md:flex-row gap-4 w-full justify-center mb-4">
+				<div class="flex flex-col items-center">
+					<label for="game-mode" class="text-white font-semibold mb-1">Game Mode</label>
+					<select id="game-mode" class="rounded-lg px-4 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+						<option value="pvc">Player vs Computer</option>
+						<option value="pvp">Player vs Player</option>
+					</select>
+				</div>
+				<div class="flex flex-col items-center" id="difficulty-container">
+					<label for="difficulty" class="text-white font-semibold mb-1">Difficulty</label>
+					<select id="difficulty" class="rounded-lg px-4 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+						<optgroup label="Easy">
+							<option value="Very Easy">Very Easy</option>
+							<option value="Easy">Easy</option>
+							<option value="Smart">Smart</option>
+							<option value="Easy Pro">Easy Pro</option>
+						</optgroup>
+						<optgroup label="Medium">
+							<option value="Medium Smart">Medium Smart</option>
+							<option value="Smart">Smart</option>
+							<option value="Smarter">Smarter</option>
+							<option value="Thinker">Thinker</option>
+						</optgroup>
+						<optgroup label="Hard">
+							<option value="Human Like">Human Like</option>
+							<option value="Pro">Pro</option>
+							<option value="Ledgen">Ledgen</option>
+							<option value="Un-Beatable">Un Beatable</option>
+						</optgroup>
+					</select>
+				</div>
+			</div>
+			<p id="message" class="text-lg font-bold text-yellow-300 text-center my-2 min-h-[2.5rem]"></p>
+			<table id="tab-ttt" class="shadow-2xl border-4 border-blue-400 rounded-xl overflow-hidden bg-gray-100" cellspacing="0">
+				<tr>
+					<td id="00" onclick="clickedCell(this)"></td>
+					<td id="01" onclick="clickedCell(this)"></td>
+					<td id="02" onclick="clickedCell(this)"></td>
+				</tr>
+				<tr>
+					<td id="10" onclick="clickedCell(this)"></td>
+					<td id="11" onclick="clickedCell(this)"></td>
+					<td id="12" onclick="clickedCell(this)"></td>
+				</tr>
+				<tr>
+					<td id="20" onclick="clickedCell(this)"></td>
+					<td id="21" onclick="clickedCell(this)"></td>
+					<td id="22" onclick="clickedCell(this)"></td>
+				</tr>
+			</table>
+			<input type="button" value="Computer Start" id="bttn-restart" onclick="restartBttn(this)" class="mt-8 font-bold px-8 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-500 active:bg-cyan-700 text-black text-xl shadow-lg transition-all duration-200"/>
+		</div>
 	</body>
 </html>

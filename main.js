@@ -1,3 +1,4 @@
+
 var board = [
 	[0, 0, 0],
 	[0, 0, 0],
@@ -6,6 +7,43 @@ var board = [
 
 var HUMAN = -1;
 var COMP = +1;
+
+// Game mode: 'pvc' (Player vs Computer) or 'pvp' (Player vs Player)
+var gameMode = 'pvc';
+var currentPlayer = HUMAN;
+
+window.addEventListener('DOMContentLoaded', function() {
+	// Game mode selector
+	var modeSelect = document.getElementById('game-mode');
+	var diffContainer = document.getElementById('difficulty-container');
+	if (modeSelect) {
+		modeSelect.addEventListener('change', function() {
+			gameMode = modeSelect.value;
+			if (gameMode === 'pvp') {
+				diffContainer.style.display = 'none';
+				document.getElementById('bttn-restart').value = 'Restart';
+				document.getElementById('message').textContent = "Player 1's turn (X)";
+			} else {
+				diffContainer.style.display = '';
+				document.getElementById('bttn-restart').value = 'Computer Start';
+				document.getElementById('message').textContent = '';
+			}
+			restartGame();
+		});
+	}
+});
+
+function restartGame() {
+	for (var x = 0; x < 3; x++) {
+		for (var y = 0; y < 3; y++) {
+			board[x][y] = 0;
+			var htmlBoard = document.getElementById(String(x) + String(y));
+			htmlBoard.style.color = '#444';
+			htmlBoard.innerHTML = '';
+		}
+	}
+	currentPlayer = HUMAN;
+}
 
 function evalute(state) {
 	var score = 0;
@@ -132,8 +170,7 @@ function aiTurn() {
 	if (emptyCells(board).length == 9) {
 		x = parseInt(Math.random() * 3);
 		y = parseInt(Math.random() * 3);
-	}
-	else {
+	} else {
 		move = minimax(board, emptyCells(board).length, COMP);
 		x = move[0];
 		y = move[1];
@@ -143,82 +180,97 @@ function aiTurn() {
 		cell = document.getElementById(String(x) + String(y));
 		cell.innerHTML = "O";
 	}
+	currentPlayer = HUMAN;
 }
 
 function clickedCell(cell) {
 	var button = document.getElementById("bttn-restart");
 	button.disabled = true;
-	var conditionToContinue = gameOverAll(board) == false && emptyCells(board).length > 0;
+	var msg = document.getElementById("message");
+	var x = parseInt(cell.id[0]);
+	var y = parseInt(cell.id[1]);
+	if (gameOverAll(board) || emptyCells(board).length === 0 || cell.innerHTML !== "") return;
 
-	if (conditionToContinue == true) {
-		var x = cell.id.split("")[0];
-		var y = cell.id.split("")[1];
-		var move = setMove(x, y, HUMAN);
-		if (move == true) {
-			cell.innerHTML = "X";
-			if (conditionToContinue)
+	if (gameMode === 'pvp') {
+		// PvP mode
+		if (currentPlayer === HUMAN) {
+			if (setMove(x, y, HUMAN)) {
+				cell.innerHTML = "X";
+				if (gameOver(board, HUMAN)) {
+					msg.textContent = "Player 1 (X) wins!";
+				} else if (emptyCells(board).length === 0) {
+					msg.textContent = "Draw!";
+				} else {
+					currentPlayer = COMP;
+					msg.textContent = "Player 2's turn (O)";
+				}
+			}
+		} else {
+			if (setMove(x, y, COMP)) {
+				cell.innerHTML = "O";
+				if (gameOver(board, COMP)) {
+					msg.textContent = "Player 2 (O) wins!";
+				} else if (emptyCells(board).length === 0) {
+					msg.textContent = "Draw!";
+				} else {
+					currentPlayer = HUMAN;
+					msg.textContent = "Player 1's turn (X)";
+				}
+			}
+		}
+		if (gameOverAll(board) || emptyCells(board).length === 0) {
+			button.value = "Restart";
+			button.disabled = false;
+		}
+		return;
+	}
+
+	// PvC mode
+	var move = setMove(x, y, HUMAN);
+	if (move === true) {
+		cell.innerHTML = "X";
+		if (!gameOverAll(board) && emptyCells(board).length > 0) {
+			setTimeout(function() {
 				aiTurn();
+				if (gameOver(board, COMP)) {
+					msg.textContent = "You lose!";
+				} else if (emptyCells(board).length === 0 && !gameOverAll(board)) {
+					msg.textContent = "Draw!";
+				}
+				if (gameOverAll(board) || emptyCells(board).length === 0) {
+					button.value = "Restart";
+					button.disabled = false;
+				}
+			}, 300);
 		}
 	}
 	if (gameOver(board, COMP)) {
-		var lines;
-		var cell;
-		var msg;
-
-		if (board[0][0] == 1 && board[0][1] == 1 && board[0][2] == 1)
-			lines = [[0, 0], [0, 1], [0, 2]];
-		else if (board[1][0] == 1 && board[1][1] == 1 && board[1][2] == 1)
-			lines = [[1, 0], [1, 1], [1, 2]];
-		else if (board[2][0] == 1 && board[2][1] == 1 && board[2][2] == 1)
-			lines = [[2, 0], [2, 1], [2, 2]];
-		else if (board[0][0] == 1 && board[1][0] == 1 && board[2][0] == 1)
-			lines = [[0, 0], [1, 0], [2, 0]];
-		else if (board[0][1] == 1 && board[1][1] == 1 && board[2][1] == 1)
-			lines = [[0, 1], [1, 1], [2, 1]];
-		else if (board[0][2] == 1 && board[1][2] == 1 && board[2][2] == 1)
-			lines = [[0, 2], [1, 2], [2, 2]];
-		else if (board[0][0] == 1 && board[1][1] == 1 && board[2][2] == 1)
-			lines = [[0, 0], [1, 1], [2, 2]];
-		else if (board[2][0] == 1 && board[1][1] == 1 && board[0][2] == 1)
-			lines = [[2, 0], [1, 1], [0, 2]];
-
-		for (var i = 0; i < lines.length; i++) {
-			cell = document.getElementById(String(lines[i][0]) + String(lines[i][1]));
-			cell.style.color = "red";
-		}
-
-		msg = document.getElementById("message");
-		msg.innerHTML = "You lose!";
+		msg.textContent = "You lose!";
 	}
-	if (emptyCells(board).length == 0 && !gameOverAll(board)) {
-		var msg = document.getElementById("message");
-		msg.innerHTML = "Draw!";
+	if (emptyCells(board).length === 0 && !gameOverAll(board)) {
+		msg.textContent = "Draw!";
 	}
-	if (gameOverAll(board) == true || emptyCells(board).length == 0) {
+	if (gameOverAll(board) || emptyCells(board).length === 0) {
 		button.value = "Restart";
 		button.disabled = false;
 	}
 }
 
 function restartBttn(button) {
-	if (button.value == "Make AI start") {
-		aiTurn();
-		button.disabled = true;
-	}
-	else if (button.value == "Restart") {
-		var htmlBoard;
-		var msg;
-
-		for (var x = 0; x < 3; x++) {
-			for (var y = 0; y < 3; y++) {
-				board[x][y] = 0;
-				htmlBoard = document.getElementById(String(x) + String(y));
-				htmlBoard.style.color = "#444";
-				htmlBoard.innerHTML = "";
-			}
+	var msg = document.getElementById("message");
+	if (gameMode === 'pvc') {
+		if (button.value === "Computer Start") {
+			aiTurn();
+			button.disabled = true;
+		} else if (button.value === "Restart") {
+			restartGame();
+			button.value = "Computer Start";
+			msg.textContent = '';
 		}
-		button.value = "Make AI start";
-		msg = document.getElementById("message");
-		msg.innerHTML = "";
+	} else {
+		// PvP
+		restartGame();
+		button.value = "Restart";
+		msg.textContent = "Player 1's turn (X)";
 	}
 }
